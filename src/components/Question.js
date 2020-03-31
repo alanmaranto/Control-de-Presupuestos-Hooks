@@ -2,12 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Question = ({
-    onChangeBudget
+    error,
+    onChangeBudget,
+    onSubmitBudget
 }) => {
   return (
     <div>
       <h2>Coloca tu presupuesto</h2>
-      <form>
+      {error ? 'Error message' : null}
+      <form onSubmit={onSubmitBudget}>
         <input
           type="text"
           className="u-full-width"
@@ -18,7 +21,7 @@ const Question = ({
         <input
           type="submit"
           className="button-primary u-full-width"
-          value="Definir Presupueso"
+          value="Definir Presupuesto"
         />
       </form>
     </div>

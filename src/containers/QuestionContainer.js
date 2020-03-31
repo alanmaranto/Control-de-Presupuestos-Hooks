@@ -3,6 +3,7 @@ import Question from "../components/Question";
 
 const QuestionContainer = () => {
   const [quantity, setQuantity] = useState(0);
+  const [error, setError] = useState(false);
 
   const onChangeBudget = e => {
     setQuantity(parseInt(e.target.value, 10));
@@ -11,13 +12,21 @@ const QuestionContainer = () => {
   const onSubmitBudget = e => {
     e.preventDefault();
 
-    // Validate
-
+    // Validate number
+    if (quantity < 1 || isNaN(quantity)) {
+      setError(true);
+      return;
+    }
     // Aftet validate
+    setError(false);
   };
 
   return (
-    <Question onChangeBudget={onChangeBudget} onSubmitBudget={onSubmitBudget} />
+    <Question
+      error={error}
+      onChangeBudget={onChangeBudget}
+      onSubmitBudget={onSubmitBudget}
+    />
   );
 };
 
