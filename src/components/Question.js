@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Error from '../helpers/Error';
+
 const Question = ({
     error,
     onChangeBudget,
@@ -9,7 +11,7 @@ const Question = ({
   return (
     <div>
       <h2>Coloca tu presupuesto</h2>
-      {error ? 'Error message' : null}
+      {error ? <Error msg="El Presupuesto es Incorrecto" /> : null}
       <form onSubmit={onSubmitBudget}>
         <input
           type="text"
