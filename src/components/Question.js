@@ -1,12 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+import Error from "../helpers/Error";
 
-import Error from '../helpers/Error';
-
-const Question = ({
-    error,
-    onChangeBudget,
-    onSubmitBudget,
-}) => {
+const Question = ({ error, onChangeBudget, onSubmitBudget }) => {
   return (
     <div>
       <h2>Coloca tu presupuesto</h2>
@@ -17,7 +13,7 @@ const Question = ({
           className="u-full-width"
           placeholder="Coloca tu presupuesto"
           onChange={onChangeBudget}
-        //   onChange={ e => setQuantity(parseInt(e.target.value, 10))}
+          //   onChange={ e => setQuantity(parseInt(e.target.value, 10))}
         />
         <input
           type="submit"
@@ -29,6 +25,10 @@ const Question = ({
   );
 };
 
-Question.propTypes = {};
+Question.propTypes = {
+  error: PropTypes.bool.isRequired,
+  onChangeBudget: PropTypes.func.isRequired,
+  onSubmitBudget: PropTypes.func.isRequired
+};
 
 export default Question;
