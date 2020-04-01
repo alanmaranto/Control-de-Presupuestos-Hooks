@@ -6,7 +6,6 @@ const Question = ({
     error,
     onChangeBudget,
     onSubmitBudget,
-
 }) => {
   return (
     <div>
@@ -29,5 +28,7 @@ const Question = ({
     </div>
   );
 };
+
+Question.propTypes = {};
 
 export default Question;

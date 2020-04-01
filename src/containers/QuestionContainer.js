@@ -3,7 +3,8 @@ import Question from "../components/Question";
 
 const QuestionContainer = ({
   setBudget,
-  setRemaining
+  setRemaining,
+  setShowQuestion
 }) => {
   const [quantity, setQuantity] = useState(0);
   const [error, setError] = useState(false);
@@ -24,6 +25,7 @@ const QuestionContainer = ({
     setError(false);
     setBudget(quantity);
     setRemaining(quantity);
+    setShowQuestion(false);
   };
 
   return (
