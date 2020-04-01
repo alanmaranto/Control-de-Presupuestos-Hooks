@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Form from "../components/Form";
+import shortid from 'shortid';
 
 const initialState = {
   title: "",
@@ -23,7 +24,11 @@ const FormContainer = () => {
     setError(false);
 
     //build the Expense
-
+    const expense = {
+        ...values,
+        id: shortid.generate()
+    }
+    console.log(expense)
     // Pass to main component
 
     //Reset form
