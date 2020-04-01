@@ -7,7 +7,9 @@ const initialState = {
   amount: 0
 };
 
-const FormContainer = () => {
+const FormContainer = ({
+    onSubmitExpense
+}) => {
   const [values, setValues] = useState(initialState);
   const [error, setError] = useState(false);
 
@@ -28,10 +30,12 @@ const FormContainer = () => {
         ...values,
         id: shortid.generate()
     }
-    console.log(expense)
+
     // Pass to main component
+    onSubmitExpense(expense)
 
     //Reset form
+    setValues(initialState)
   };
 
   const onChange = name => e => {
@@ -48,6 +52,7 @@ const FormContainer = () => {
       amount={amount}
       onChange={onChange}
       onSubmit={onSubmit}
+      onSubmitExpense={onSubmitExpense}
     />
   );
 };
