@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Error from "../helpers/Error";
 
-const Form = ({ amount, title, onChange }) => {
+const Form = ({ amount, title, error, onChange, onSubmit }) => {
   return (
     <div>
-      <form>
+      <form onSubmit={onSubmit}>
         <h2>Agrega tus datos aquí</h2>
+        { error ? <Error msg='Ambos campos son obligatorios o Presupuesto incorrecto' /> : null }
         <div className="campo">
           <label>Nombre Gasto</label>
           <input
@@ -14,7 +16,7 @@ const Form = ({ amount, title, onChange }) => {
             placeholder="Ej. Transporte"
             value={title}
             name="title"
-            onChange={onChange('title')}
+            onChange={onChange("title")}
           />
         </div>
         <div className="campo">
@@ -25,7 +27,7 @@ const Form = ({ amount, title, onChange }) => {
             placeholder="Ej. 300"
             value={amount}
             name="amount"
-            onChange={onChange('amount')}
+            onChange={onChange("amount")}
           />
         </div>
         <input

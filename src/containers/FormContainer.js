@@ -8,20 +8,26 @@ const initialState = {
 
 const FormContainer = () => {
   const [values, setValues] = useState(initialState);
+  const [error, setError] = useState(false);
 
   const { title, amount } = values;
 
   const onSubmit = e => {
-      e.preventDefault();
+    e.preventDefault();
 
-      // validate
+    // validate
+    if (amount < 1 || isNaN(amount) || title.trim() === "") {
+      setError(true);
+      return;
+    }
+    setError(false);
 
-      //Expense
+    //build the Expense
 
-      // Pass to main component
+    // Pass to main component
 
-      //Reset form
-  }
+    //Reset form
+  };
 
   const onChange = name => e => {
     setValues({
@@ -30,7 +36,15 @@ const FormContainer = () => {
     });
   };
 
-  return <Form title={title} amount={amount} onChange={onChange} />;
+  return (
+    <Form
+      error={error}
+      title={title}
+      amount={amount}
+      onChange={onChange}
+      onSubmit={onSubmit}
+    />
+  );
 };
 
 export default FormContainer;
