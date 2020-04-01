@@ -1,12 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import Error from '../helpers/Error';
 
 const Question = ({
     error,
     onChangeBudget,
-    onSubmitBudget
+    onSubmitBudget,
+
 }) => {
   return (
     <div>
@@ -29,7 +29,5 @@ const Question = ({
     </div>
   );
 };
-
-Question.propTypes = {};
 
 export default Question;

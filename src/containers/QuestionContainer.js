@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Question from "../components/Question";
 
-const QuestionContainer = () => {
+const QuestionContainer = ({
+  setBudget,
+  setRemaining
+}) => {
   const [quantity, setQuantity] = useState(0);
   const [error, setError] = useState(false);
 
@@ -19,6 +22,8 @@ const QuestionContainer = () => {
     }
     // Aftet validate
     setError(false);
+    setBudget(quantity);
+    setRemaining(quantity);
   };
 
   return (
