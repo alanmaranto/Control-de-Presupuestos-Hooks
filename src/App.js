@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import QuestionContainer from "./containers/QuestionContainer";
+import FormContainer from './containers/FormContainer';
 
 function App() {
   const [budget, setBudget] = useState(0);
@@ -14,6 +15,12 @@ function App() {
             setBudget={setBudget}
             setRemaining={setRemaining}
           />
+          <div className="row">
+            <div className="one-half column">
+              <FormContainer />
+            </div>
+            <div className="one-half column">2</div>
+          </div>
         </div>
       </header>
     </div>
