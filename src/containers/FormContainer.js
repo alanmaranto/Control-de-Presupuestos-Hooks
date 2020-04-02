@@ -1,16 +1,14 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Form from "../components/Form";
-import shortid from 'shortid';
+import shortid from "shortid";
 
 const initialState = {
   title: "",
   amount: 0
 };
 
-const FormContainer = ({
-    setExpense,
-    setShowExpense
-}) => {
+const FormContainer = ({ setExpense, setShowExpense }) => {
   const [values, setValues] = useState(initialState);
   const [error, setError] = useState(false);
 
@@ -28,16 +26,16 @@ const FormContainer = ({
 
     //build the Expense
     const expense = {
-        ...values,
-        id: shortid.generate()
-    }
+      ...values,
+      id: shortid.generate()
+    };
 
     // Pass to main component
-    setExpense(expense)
+    setExpense(expense);
     setShowExpense(true);
 
     //Reset form
-    setValues(initialState)
+    setValues(initialState);
   };
 
   const onChange = name => e => {
@@ -56,6 +54,11 @@ const FormContainer = ({
       onSubmit={onSubmit}
     />
   );
+};
+
+Form.propTypes = {
+  setExpense: PropTypes.func,
+  setShowExpense: PropTypes.func
 };
 
 export default FormContainer;

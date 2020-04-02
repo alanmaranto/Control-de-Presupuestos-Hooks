@@ -7,7 +7,9 @@ const Form = ({ amount, title, error, onChange, onSubmit }) => {
     <div>
       <form onSubmit={onSubmit}>
         <h2>Agrega tus datos aquí</h2>
-        { error ? <Error msg='Ambos campos son obligatorios o Presupuesto incorrecto' /> : null }
+        {error ? (
+          <Error msg="Ambos campos son obligatorios o Presupuesto incorrecto" />
+        ) : null}
         <div className="campo">
           <label>Nombre Gasto</label>
           <input
@@ -40,6 +42,12 @@ const Form = ({ amount, title, error, onChange, onSubmit }) => {
   );
 };
 
-Form.propTypes = {};
+Form.propTypes = {
+  error: PropTypes.bool.isRequired,
+  amount: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default Form;

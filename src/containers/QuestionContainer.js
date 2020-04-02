@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import Question from "../components/Question";
 
 const QuestionContainer = ({
@@ -36,5 +37,11 @@ const QuestionContainer = ({
     />
   );
 };
+
+QuestionContainer.propTypes = {
+  setBudget: PropTypes.func.isRequired,
+  setRemaining: PropTypes.func.isRequired,
+  setShowQuestion: PropTypes.func.isRequired,
+}
 
 export default QuestionContainer;
