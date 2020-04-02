@@ -8,7 +8,8 @@ const initialState = {
 };
 
 const FormContainer = ({
-    onSubmitExpense
+    setExpense,
+    setShowExpense
 }) => {
   const [values, setValues] = useState(initialState);
   const [error, setError] = useState(false);
@@ -32,7 +33,8 @@ const FormContainer = ({
     }
 
     // Pass to main component
-    onSubmitExpense(expense)
+    setExpense(expense)
+    setShowExpense(true);
 
     //Reset form
     setValues(initialState)
@@ -52,7 +54,6 @@ const FormContainer = ({
       amount={amount}
       onChange={onChange}
       onSubmit={onSubmit}
-      onSubmitExpense={onSubmitExpense}
     />
   );
 };

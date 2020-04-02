@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuestionContainer from "./containers/QuestionContainer";
 import FormContainer from "./containers/FormContainer";
-import ListExpenses from './components/ListExpenses';
-import BudgetControl from './components/BudgetControl';
+import ListExpenses from "./components/ListExpenses";
+import BudgetControl from "./components/BudgetControl";
 function App() {
   const [budget, setBudget] = useState(0);
   const [remaining, setRemaining] = useState(0);
   const [showQuestion, setShowQuestion] = useState(true);
   const [expenses, setExpenses] = useState([]);
+  const [expense, setExpense] = useState({});
+  const [showExpense, setShowExpense] = useState(false);
 
-  const onSubmitExpense = expense => {
-    setExpenses([
-      ...expenses,
-      expense
-    ])
-  }
+  // Update the remaining
+  useEffect(() => {
+    if (showExpense) {
+
+      // Add the budget
+      setExpenses([...expenses, expense]);
+
+      // Subtract the actual budget
+      const remainingBudget = remaining - expense.amount;
+      setRemaining(remainingBudget)
+
+      // Reset to false
+      setShowExpense(false);
+    }
+  }, [expense]);
 
   return (
     <div className="container">
@@ -30,18 +41,14 @@ function App() {
           ) : (
             <div className="row">
               <div className="one-half column">
-                <FormContainer 
-                  onSubmitExpense={onSubmitExpense}
+                <FormContainer
+                  setExpense={setExpense}
+                  setShowExpense={setShowExpense}
                 />
               </div>
               <div className="one-half column">
-                <ListExpenses 
-                  expenses={expenses}
-                />
-                <BudgetControl 
-                  budget={budget}
-                  remaining={remaining}
-                />
+                <ListExpenses expenses={expenses} />
+                <BudgetControl budget={budget} remaining={remaining} />
               </div>
             </div>
           )}
