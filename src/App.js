@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import QuestionContainer from "./containers/QuestionContainer";
 import FormContainer from "./containers/FormContainer";
+import ListExpenses from './components/ListExpenses';
 
 function App() {
   const [budget, setBudget] = useState(0);
@@ -33,7 +34,11 @@ function App() {
                   onSubmitExpense={onSubmitExpense}
                 />
               </div>
-              <div className="one-half column">2</div>
+              <div className="one-half column">
+                <ListExpenses 
+                  expenses={expenses}
+                />
+              </div>
             </div>
           )}
         </div>
