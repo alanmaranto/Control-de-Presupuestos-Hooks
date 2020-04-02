@@ -1,10 +1,11 @@
 import React from "react";
+import { checkBudget } from '../helpers/helpers';
 
 const BudgetControl = ({ budget, remaining }) => {
   return (
     <>
       <div className="alert alert-primary">Presupuesto: {budget} </div>
-      <div className="alert">Restante: {remaining} </div>
+      <div className={checkBudget(budget, remaining)}>Restante: {remaining} </div>
     </>
   );
 };

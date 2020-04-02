@@ -25,7 +25,7 @@ function App() {
       // Reset to false
       setShowExpense(false);
     }
-  }, [expense]);
+  }, [expense, expenses, remaining, showExpense]);
 
   return (
     <div className="container">
