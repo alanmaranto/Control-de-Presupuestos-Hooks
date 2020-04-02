@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Error from "../helpers/Error";
+import Error from "../core/Error";
 
 const Question = ({ error, onChangeBudget, onSubmitBudget }) => {
   return (
